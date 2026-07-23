@@ -11,7 +11,8 @@
     "ts:compile": "tsc",
 
     "start": "node out/index.js",
-    "deploy-slash": "echo \"Not implemented\"",
+    "slash:deploy": "node out/RegisterSlashCommands.js",
+    "slash:clear": "node out/ClearSlashCommands.js",
     
     "local-server:build": "npm install && npm run ts:compile",
     "local-server:deploy": "pm2 start out/index.js --name \"Airship API Bot\""
