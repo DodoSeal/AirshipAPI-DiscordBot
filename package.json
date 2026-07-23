@@ -1,0 +1,26 @@
+{
+  "name": "airship-api-bot",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Max McDaniel",
+  "type": "module",
+  "main": "out/index.js",
+  "scripts": {
+    "ts:watch": "tsc -w",
+    "ts:compile": "tsc",
+
+    "start": "node out/index.js",
+    "deploy-slash": "echo \"Not implemented\"",
+    
+    "local-server:build": "npm install && npm run ts:compile",
+    "local-server:deploy": "pm2 start out/index.js --name \"Airship API Bot\""
+  },
+  "dependencies": {
+    "discord.js": "^14.27.0",
+    "dotenv": "^17.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1"
+  }
+}
