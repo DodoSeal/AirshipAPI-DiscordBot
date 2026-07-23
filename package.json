@@ -9,6 +9,7 @@
   "scripts": {
     "ts:watch": "tsc -w",
     "ts:compile": "tsc",
+    "ts:clean": "rm -rf ./out && mkdir ./out && tsc",
 
     "start": "node out/index.js",
     "slash:deploy": "node out/RegisterSlashCommands.js",
