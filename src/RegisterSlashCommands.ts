@@ -4,6 +4,7 @@ import fs from "fs";
 import path from "path";
 
 import dotenv from "dotenv";
+import { SlashCommandData } from "./types/AppTypes.js";
 dotenv.config({ quiet: true });
 
 const clientInfo = {
@@ -20,7 +21,7 @@ const slashCommands: SlashCommandBuilder[] = [];
 
 for (let fileName of slashCommandDir) {
     if (fileName.endsWith(".js") === false) continue;
-    const commandHandler = ((await import(path.join(import.meta.dirname, `./slashCommands/${fileName}`))).default);
+    const commandHandler: SlashCommandData = ((await import(path.join(import.meta.dirname, `./slashCommands/${fileName}`))).default);
     slashCommands.push(commandHandler.builder);
 };
 
