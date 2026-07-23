@@ -8,6 +8,7 @@ import path from "path";
 
 // Environment Setup
 import dotenv from "dotenv";
+import { AppEventHandler } from "./types/AppEventTypes.js";
 dotenv.config({ quiet: true });
 
 const app = new Client({
@@ -21,10 +22,10 @@ const appEventDir = fs.readdirSync(path.join(import.meta.dirname, "./appEvents")
 
 for (let fileName of appEventDir) {
     if (fileName.endsWith(`.js`) === false) continue;
-    const appEventHandler = await import(path.join(import.meta.dirname, `./appEvents/${fileName}`));
+    const appEventHandler: AppEventHandler = ((await import(path.join(import.meta.dirname, `./appEvents/${fileName}`))).default);
 
-    app.once(appEventHandler.default.name, () => {
-        appEventHandler.default.execute(app);
+    app.on(appEventHandler.name, (...args) => {
+        appEventHandler.execute(app, ...args);
     });
 };
 
