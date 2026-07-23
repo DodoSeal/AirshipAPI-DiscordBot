@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, Client } from "discord.js";
-import { SlashCommandHandler } from "../types/AppEventTypes.js";
+import { SlashCommandHandler } from "../types/AppTypes.js";
 
 const command: SlashCommandHandler = {
     name: "ping",

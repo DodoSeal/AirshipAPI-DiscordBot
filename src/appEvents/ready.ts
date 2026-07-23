@@ -1,5 +1,5 @@
 import { Client } from "discord.js";
-import { AppEventHandler } from "../types/AppEventTypes.js";
+import { AppEventHandler } from "../types/AppTypes.js";
 
 const appEvent: AppEventHandler = {
     name: "clientReady",

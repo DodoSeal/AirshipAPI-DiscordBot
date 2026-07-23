@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, Client, InteractionType, Interaction } from "discord.js";
-import { AppEventHandler, SlashCommandHandler } from "../types/AppEventTypes.js";
+import { AppEventHandler, SlashCommandHandler } from "../types/AppTypes.js";
 
 import fs from "fs";
 import path from "path";

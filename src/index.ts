@@ -8,7 +8,7 @@ import path from "path";
 
 // Environment Setup
 import dotenv from "dotenv";
-import { AppEventHandler } from "./types/AppEventTypes.js";
+import { AppEventHandler } from "./types/AppTypes.js";
 dotenv.config({ quiet: true });
 
 const app = new Client({
