@@ -2,7 +2,7 @@ import { Client, ClientEvents } from "discord.js";
 
 export interface AppEventHandler {
     name: keyof ClientEvents,
-    execute(app: Client): Promise<void>
+    execute(app: Client, ...args: any[]): Promise<void>
 };
 
 // WIP
