@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, Client, InteractionType, Interaction } from "discord.js";
-import { AppEventHandler, SlashCommandHandler } from "../types/AppTypes.js";
+import { AppEventHandler, SlashCommandData } from "../types/AppTypes.js";
 
 import fs from "fs";
 import path from "path";
@@ -9,12 +9,12 @@ const appEvent: AppEventHandler = {
     execute: async function(app: Client, interaction: Interaction) {
         if (interaction.type !== InteractionType.ApplicationCommand) return;
 
-        const slashHandlersDir = fs.readdirSync(path.join(import.meta.dirname, "../slashHandlers"), { encoding: "utf-8" });
+        const commandsDir = fs.readdirSync(path.join(import.meta.dirname, "../slashCommands"), { encoding: "utf-8" });
 
-        for (let fileName of slashHandlersDir) {
+        for (let fileName of commandsDir) {
             if (fileName.endsWith(".js") === false) continue;
-            const commandHandler: SlashCommandHandler = ((await import(path.join(import.meta.dirname, `../slashHandlers/${fileName}`))).default);
-            
+            const commandHandler: SlashCommandData = ((await import(path.join(import.meta.dirname, `../slashCommands/${fileName}`))).default);
+
             if (commandHandler.name === interaction.commandName) {
                 commandHandler.execute(app, interaction as ChatInputCommandInteraction);
             };

@@ -22,7 +22,7 @@ const slashCommands: SlashCommandBuilder[] = [];
 for (let fileName of slashCommandDir) {
     if (fileName.endsWith(".js") === false) continue;
     const commandHandler: SlashCommandData = ((await import(path.join(import.meta.dirname, `./slashCommands/${fileName}`))).default);
-    slashCommands.push(commandHandler.builder);
+    slashCommands.push(commandHandler.builder as SlashCommandBuilder);
 };
 
 await rest.put(Routes.applicationGuildCommands(clientInfo.clientId, clientInfo.guildId), { body: slashCommands }).then(() => {

@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, Client, ClientEvents, SlashCommandBuilder } from "discord.js";
+import { ChatInputCommandInteraction, Client, ClientEvents, SlashCommandBuilder, SlashCommandOptionsOnlyBuilder } from "discord.js";
 
 export interface AppEventHandler {
     name: keyof ClientEvents,
@@ -7,10 +7,6 @@ export interface AppEventHandler {
 
 export interface SlashCommandData {
     name: string,
-    builder: SlashCommandBuilder
-};
-
-export interface SlashCommandHandler {
-    name: string,
+    builder: SlashCommandBuilder,
     execute(app: Client, interaction: ChatInputCommandInteraction): Promise<void>
 };
